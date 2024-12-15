@@ -13,17 +13,31 @@ score = 0          # Текущее количестно очков
 maxScore = 0       # Максимальное кольчесвто очков за игру
 
 
-digit = random.randint(lowDigit, highDigit)
-print('Компьютер загадал число, попробуйте отгадать!')
-print(f'Компьютер загадал {digit}')  # Строка для проверки
+while (playGame):
+    digit = random.randint(lowDigit, highDigit)
+    print('Компьютер загадал число, попробуйте отгадать!\n')
+    print(f'Компьютер загадал {digit}\n')  # Строка для проверки
 
-x = ''
-while (not x.isdigit()):
-    x = input(f'Введите число от {lowDigit} до {highDigit}: ')
-    if (not x.isdigit()):
-        print('.' * 27 + 'Введите, пожалуйства, число.')
+    # Внутренний цикл
+    while (not win):
+        x = ''
+        while (not x.isdigit()):
+            x = input(f'Введите число от {lowDigit} до {highDigit}:\n')
+            print(int(x) < lowDigit)
+            if x.isdigit() and ((int(x) < lowDigit) or (int(x) > highDigit)):
+                print(f'Числа должны быть в диапозоне от {lowDigit} до {highDigit}:\n')
+            elif x.isdigit() != digit:
+                print('Вы не угадали(\n')
+            elif (not x.isdigit()):
+                print('.' * 27 + 'Введите, пожалуйства, число.\n')
 
-x = int(x)
+        x = int(x)
 
-if (x == digit):
-    print('Победа!!!')
+        if (x == digit):
+            print('Победа!!!')
+            # Сбрасываем win
+            win = True
+    if (input('Enter - сыграть снова, 0 - выход') == '0'):
+        playGame = False
+    else:
+        win = False
