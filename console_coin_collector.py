@@ -1,3 +1,6 @@
+import random
+
+
 # Создание игрового поля и персонажа
 field_size = 10
 player_x = 0
@@ -30,8 +33,27 @@ def move_player(direction):
     elif direction == 'd' and player_x < field_size - 1:
         player_x += 1
 
+
 while True:
     draw_field()
     command = input("Введите направление (W/A/S/D): ").lower()
     move_player(command)
+
+
+# Генерация монеты
+coin_x, coin_y = random.randint(0, field_size - 1), random.randint(0, field_size - 1)
+
+
+def draw_field():
+    for y in range(field_size):
+        for x in range(field_size):
+            if x == player_x and y == player_y:
+                print('@', end=' ')
+            elif x == coin_x and y == coin_y:
+                print('$', end=' ')  # Монета
+            else:
+                print('.', end=' ')
+        print()
+    print()
+
 
