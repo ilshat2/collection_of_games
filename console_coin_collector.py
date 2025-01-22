@@ -36,12 +36,18 @@ def move_player(direction):
 
 while True:
     draw_field()
-    command = input("Введите направление (W/A/S/D): ").lower()
+    command = input("Введите направление (W/A/S/D) или 'exit' для выхода: ").lower()
+
+    if command == "exit":
+        print("Выход из игры.")
+        break
+
     move_player(command)
 
 
 # Генерация монеты
-coin_x, coin_y = random.randint(0, field_size - 1), random.randint(0, field_size - 1)
+coin_x = random.randint(0, field_size - 1)
+coin_y = random.randint(0, field_size - 1)
 
 
 def draw_field():
