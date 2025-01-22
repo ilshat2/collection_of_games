@@ -16,3 +16,22 @@ def draw_field():
 
 
 draw_field()
+
+
+# Добавляем движение персонажа
+def move_player(direction):
+    global player_x, player_y
+    if direction == 'w' and player_y > 0:
+        player_y -= 1
+    elif direction == 's' and player_y < field_size - 1:
+        player_y += 1
+    elif direction == 'a' and player_x > 0:
+        player_x -= 1
+    elif direction == 'd' and player_x < field_size - 1:
+        player_x += 1
+
+while True:
+    draw_field()
+    command = input("Введите направление (W/A/S/D): ").lower()
+    move_player(command)
+
