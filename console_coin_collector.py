@@ -75,3 +75,13 @@ while True:
     move_player(command)
     check_coin()
 
+
+# Условие победы
+while True:
+    draw_field()
+    if score >= 3:
+        print("Поздравляем, вы победили!")
+        break
+    command = input("Введите направление (W/A/S/D): ").lower()
+    move_player(command)
+    check_coin()
